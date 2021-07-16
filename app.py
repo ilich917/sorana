@@ -130,12 +130,12 @@ def render_dash():
     fig = go.Figure(data=go.Scatterpolar(
     r=[r2+r5+r12, 15-(r1+r4+r8), r3+r6+r9,15-(r7+r10+r11)],
     theta=['Agotamiento Emocional', 'Desrealización Profesional', 'Despersonalización', 'Improductividad Subjetiva'],
-    fill='toself', name = 'Mi_resultado'))
+    fill='toself'))
     
     fig.add_trace(go.Scatterpolar(
     r=[min_por_area, min_por_area, min_por_area, min_por_area],
     theta=['Agotamiento Emocional', 'Desrealización Profesional', 'Despersonalización', 'Improductividad Subjetiva'],
-    fill='toself', name = 'Normal_alto'))
+    fill='toself'))
     
     fig.update_layout(
         polar=dict(
@@ -143,7 +143,7 @@ def render_dash():
             visible=True
         ),
         ),
-        showlegend=True
+        showlegend=False
     )
     if int(burnout) > 22:
         dashapp.layout = html.Div([
