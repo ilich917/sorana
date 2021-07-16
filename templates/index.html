@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Customer Feedback Form</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <style>
+      html, body {
+      min-height: 100%;
+      }
+      body, div, form, input, p { 
+      padding: 0;
+      margin: 0;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 14px;
+      color: #666;
+      line-height: 22px;
+      }
+      h1 {
+      font-weight: 400;
+      }
+      h4 {
+      margin: 15px 0 4px;
+      }
+      .testbox {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: inherit;
+      padding: 3px;
+      }
+      form {
+      width: 100%;
+      padding: 20px;
+      background: #fff;
+      box-shadow: 0 2px 5px #ccc; 
+      }
+      input {
+      width: calc(100% - 10px);
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      vertical-align: middle;
+      }
+      .email {
+      display: block;
+      width: 45%;
+      }
+      input:hover, textarea:hover {
+      outline: none;
+      border: 1px solid #095484;
+      }
+      th, td {
+      width: 15%;
+      padding: 15px 0;
+      border-bottom: 1px solid #ccc;
+      text-align: center;
+      vertical-align: unset;
+      line-height: 18px;
+      font-weight: 400;
+      word-break: break-all;
+      }
+      .first-col {
+      width: 16%;
+      text-align: left;
+      }
+      table {
+      width: 100%;
+      }
+      textarea {
+      width: calc(100% - 6px);
+      }
+      .btn-block {
+      margin-top: 20px;
+      text-align: center;
+      }
+      button {
+      width: 150px;
+      padding: 10px;
+      border: none;
+      -webkit-border-radius: 5px; 
+      -moz-border-radius: 5px; 
+      border-radius: 5px; 
+      background-color: #095484;
+      font-size: 16px;
+      color: #fff;
+      cursor: pointer;
+      }
+      button:hover {
+      background-color: #0666a3;
+      }
+      @media (min-width: 568px) {
+      th, td {
+      word-break: keep-all;
+      }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="testbox">
+      <form action="/results" method='POST' id="formulario">
+        <h1>Demo Vista Usuario Trabajador</h1>
+        <h3>Contesta este formulario, tus respuestas serán anónimas</h3>
+        <table>
+          <tr>
+            <th class="first-col"></th>
+            <th>Muy en desacuerdo</th>
+            <th>En desacuerdo</th>
+            <th>Neutro</th>
+            <th>De acuerdo</th>
+            <th>Muy de acuerdo</th>
+          </tr>
+          <tr>
+            <td class="first-col">Me encuentro animado después de un día de trabajo</td>
+            
+            <td><input type="radio" value= "1" name='r1' form = 'formulario'></td>
+            <td><input type="radio" value= "2" name='r1' form = 'formulario'></td>
+            <td><input type="radio" value= "3" name='r1' form = 'formulario'></td>
+            <td><input type="radio" value= "4" name='r1' form = 'formulario'></td>
+            <td><input type="radio" value= "5" name='r1' form = 'formulario'></td>
+          
+          </tr>
+          <tr>
+            <td class="first-col">Debido a mi trabajo me siento emocionalmente agotado</td>
+            <td><input type="radio" value="1" name="r2" /></td>
+            <td><input type="radio" value="2" name="r2" /></td>
+            <td><input type="radio" value="3" name="r2" /></td>
+            <td><input type="radio" value="4" name="r2" /></td>
+            <td><input type="radio" value="5" name="r2" /></td>
+          </tr>
+          <tr>
+            <td class="first-col">Me preocupa que este trabajo me está endureciendo emocionalmente</td>
+            <td><input type="radio" value="1" name="r3" /></td>
+            <td><input type="radio" value="2" name="r3" /></td>
+            <td><input type="radio" value="3" name="r3" /></td>
+            <td><input type="radio" value="4" name="r3" /></td>
+            <td><input type="radio" value="5" name="r3" /></td>
+          </tr>
+          <tr>
+            <td class="first-col">Siento que sé tratar de forma adecuada los problemas emocionales en el trabajo</td>
+            <td><input type="radio" value="1" name="r4" /></td>
+            <td><input type="radio" value="2" name="r4" /></td>
+            <td><input type="radio" value="3" name="r4" /></td>
+            <td><input type="radio" value="4" name="r4" /></td>
+            <td><input type="radio" value="5" name="r4" /></td>
+          </tr>
+          <tr>
+            <td class="first-col">Me encuentro cansado cuando me levanto por las mañanas y tengo que enfrentarme a otro día de trabajo</td>
+            <td><input type="radio" value="1" name="r5" /></td>
+            <td><input type="radio" value="2" name="r5" /></td>
+            <td><input type="radio" value="3" name="r5" /></td>
+            <td><input type="radio" value="4" name="r5" /></td>
+            <td><input type="radio" value="5" name="r5" /></td>
+          </tr>
+          <tr>
+            <td class="first-col">Realmente no me importa lo que le ocurrirá a algunos de mis compañeros de trabajo</td>
+            <td><input type="radio" value="1" name="r6" /></td>
+            <td><input type="radio" value="2" name="r6" /></td>
+            <td><input type="radio" value="3" name="r6" /></td>
+            <td><input type="radio" value="4" name="r6" /></td>
+            <td><input type="radio" value="5" name="r6" /></td>
+          </tr>
+          <tr>
+            <td class="first-col">Me desempeño adecuadamente en mi trabajo casi todos los días</td>
+            <td><input type="radio" value="1" name="r7" /></td>
+            <td><input type="radio" value="2" name="r7" /></td>
+            <td><input type="radio" value="3" name="r7" /></td>
+            <td><input type="radio" value="4" name="r7" /></td>
+            <td><input type="radio" value="5" name="r7" /></td>
+          </tr>
+          <tr>
+            <td class="first-col">He realizado muchas cosas que merecen la pena en este trabajo</td>
+            <td><input type="radio" value="1" name="r8" /></td>
+            <td><input type="radio" value="2" name="r8" /></td>
+            <td><input type="radio" value="3" name="r8" /></td>
+            <td><input type="radio" value="4" name="r8" /></td>
+            <td><input type="radio" value="5" name="r8" /></td>
+          </tr>
+          <tr>
+            <td class="first-col">Creo que tengo un comportamiento más insensible con la gente desde que hago este trabajo</td>
+            <td><input type="radio" value="1" name="r9" /></td>
+            <td><input type="radio" value="2" name="r9" /></td>
+            <td><input type="radio" value="3" name="r9" /></td>
+            <td><input type="radio" value="4" name="r9" /></td>
+            <td><input type="radio" value="5" name="r9" /></td>
+          </tr>
+          <tr>
+            <td class="first-col">Realmente no me importa lo que le ocurrirá a algunos de mis compañeros de trabajo</td>
+            <td><input type="radio" value="1" name="r10" /></td>
+            <td><input type="radio" value="2" name="r10" /></td>
+            <td><input type="radio" value="3" name="r10" /></td>
+            <td><input type="radio" value="4" name="r10" /></td>
+            <td><input type="radio" value="5" name="r10" /></td>
+          </tr>
+          <tr>
+            <td class="first-col">Creo que tengo lo que se necesita para realizar bien mi trabajo</td>
+            <td><input type="radio" value="1" name="r11" /></td>
+            <td><input type="radio" value="2" name="r11" /></td>
+            <td><input type="radio" value="3" name="r11" /></td>
+            <td><input type="radio" value="4" name="r11" /></td>
+            <td><input type="radio" value="5" name="r11" /></td>
+          </tr>
+          <tr>
+            <td class="first-col">Siento que estoy haciendo un trabajo demasiado duro</td>
+            <td><input type="radio" value="1" name="r12" /></td>
+            <td><input type="radio" value="2" name="r12" /></td>
+            <td><input type="radio" value="3" name="r12" /></td>
+            <td><input type="radio" value="4" name="r12" /></td>
+            <td><input type="radio" value="5" name="r12" /></td>
+          </tr>
+        </table>
+          <small>Déjanos tu Email si deseas saber más de nosotros</small>
+          <input class="email" type="text" name="name" />
+          <div class="btn-block">
+            <button type="submit">Diagnóstico Preliminar</button>
+          </div>
+      </form>   
+    </div>
+  </body>
+</html>
