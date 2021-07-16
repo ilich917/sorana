@@ -1,4 +1,3 @@
-from dash_html_components.H1 import H1
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 #from flask.ext.session import Session
 from flask_mysqldb import MySQL
@@ -11,6 +10,7 @@ app = Flask(__name__)
 SESSION_TYPE = 'redis'
 app.config.from_object(__name__)
 #Session(app)
+
 app.secret_key = 'esto-es-una-clave-muy-secreta'
 app.config['MYSQL_HOST'] = 'us-cdbr-east-04.cleardb.com'
 app.config['MYSQL_USER'] = 'bb673b520dd784'
@@ -81,7 +81,48 @@ def results():
 #external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 dashapp = dash.Dash(__name__, server=app, url_base_pathname='/dash/')
 
-fig = go.Figure()
+fig = go.Figure(data=go.Scatterpolar(
+  r=[1, 5, 2, 2, 3],
+  theta=['processing cost','mechanical properties','chemical stability', 'thermal stability',
+           'device integration'],
+  fill='toself', name = 'Mi_resultado'
+))
+
+fig.update_layout(
+        polar=dict(
+        radialaxis=dict(
+            visible=True
+        ),
+        ),
+        showlegend=False
+    )
+    
+dashapp.layout = html.Div()
+
+#error?
+
+# _____________________
+
+@app.route('/dash_plotly', methods=['GET'])
+def render_dash():
+    
+    r1 = int(session.get('r1', None))
+    r2 = int(session.get('r2', None))
+    r3 = int(session.get('r3', None))
+    r4 = int(session.get('r4', None))
+    r5 = int(session.get('r5', None))
+    r6 = int(session.get('r6', None))
+    r7 = int(session.get('r7', None))
+    r8 = int(session.get('r8', None))
+    r9 = int(session.get('r9', None))
+    r10 = int(session.get('r10', None))
+    r11 = int(session.get('r11', None))
+    r12 = int(session.get('r12', None))
+    
+    session.clear()
+    dashapp = dash.Dash(__name__, server=app, url_base_pathname='/dash/')
+
+
 # _____________________
 
 @app.route('/dash_plotly', methods=['GET'])
@@ -109,12 +150,12 @@ def render_dash():
     fig.add_trace(data=go.Scatterpolar(
     r=[r2+r5+r12, 15-(r1+r4+r8), r3+r6+r9,15-(r7+r10+r11)],
     theta=['Agotamiento Emocional', 'Desrealización Profesional', 'Despersonalización', 'Improductividad Subjetiva'],
-    fill='toself'))
+    fill='toself', name = 'Mi_resultado'))
     
     fig.add_trace(data=go.Scatterpolar(
     r=[min_por_area, min_por_area, min_por_area, min_por_area],
     theta=['Agotamiento Emocional', 'Desrealización Profesional', 'Despersonalización', 'Improductividad Subjetiva'],
-    fill='toself'))
+    fill='toself', name = 'Normal alto'))
     
     fig.update_layout(
         polar=dict(
