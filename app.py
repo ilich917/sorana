@@ -11,10 +11,10 @@ SESSION_TYPE = 'redis'
 app.config.from_object(__name__)
 #Session(app)
 app.secret_key = 'esto-es-una-clave-muy-secreta'
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'password'
-app.config['MYSQL_DB'] = 'formulario'
+app.config['MYSQL_HOST'] = 'us-cdbr-east-04.cleardb.com'
+app.config['MYSQL_USER'] = 'bb673b520dd784'
+app.config['MYSQL_PASSWORD'] = '32a17440'
+app.config['MYSQL_DB'] = 'heroku_abca1c21f295eab'
 mysql = MySQL(app)
 
 # ___________________________
