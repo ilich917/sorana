@@ -81,47 +81,12 @@ def results():
 #external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 dashapp = dash.Dash(__name__, server=app, url_base_pathname='/dash/')
 
-fig = go.Figure(data=go.Scatterpolar(
-  r=[1, 5, 2, 2, 3],
-  theta=['processing cost','mechanical properties','chemical stability', 'thermal stability',
-           'device integration'],
-  fill='toself', name = 'Mi_resultado'
-))
+fig = go.Figure()
 
-fig.update_layout(
-        polar=dict(
-        radialaxis=dict(
-            visible=True
-        ),
-        ),
-        showlegend=False
-    )
     
 dashapp.layout = html.Div()
 
 #error?
-
-# _____________________
-
-@app.route('/dash_plotly', methods=['GET'])
-def render_dash():
-    
-    r1 = int(session.get('r1', None))
-    r2 = int(session.get('r2', None))
-    r3 = int(session.get('r3', None))
-    r4 = int(session.get('r4', None))
-    r5 = int(session.get('r5', None))
-    r6 = int(session.get('r6', None))
-    r7 = int(session.get('r7', None))
-    r8 = int(session.get('r8', None))
-    r9 = int(session.get('r9', None))
-    r10 = int(session.get('r10', None))
-    r11 = int(session.get('r11', None))
-    r12 = int(session.get('r12', None))
-    
-    session.clear()
-    dashapp = dash.Dash(__name__, server=app, url_base_pathname='/dash/')
-
 
 # _____________________
 
