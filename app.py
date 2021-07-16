@@ -81,24 +81,7 @@ def results():
 #external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 dashapp = dash.Dash(__name__, server=app, url_base_pathname='/dash/')
 
-fig = go.Figure(data=go.Scatterpolar(
-r=[1, 2, 3, 4, 5],
-theta=['Agotamiento Emocional', 'Realización Profesional', 'Despersonalización', 'Improductividad Subjetiva'],
-fill='toself'))
-
-fig.update_layout(
-    polar=dict(
-    radialaxis=dict(
-        visible=True
-    ),
-    ),
-    showlegend=False
-)
-dashapp.layout = html.Div([
-    html.H1('Nivel de Burnout', style={'textAlign': 'center'}),
-    dcc.Graph(figure=fig),
-    html.Div(dcc.Link(html.Button('back'), id='volver', href='/', refresh=True), style={'textAlign': 'center'} )  
-])
+fig = go.Figure()
 # _____________________
 
 @app.route('/dash_plotly', methods=['GET'])
