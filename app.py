@@ -1,3 +1,4 @@
+from dash_html_components.H1 import H1
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 #from flask.ext.session import Session
 from flask_mysqldb import MySQL
@@ -116,9 +117,19 @@ def render_dash():
     r11 = int(session.get('r11', None))
     r12 = int(session.get('r12', None))
     
+    min_por_area = 7
+    burnout = r2+r5+r12 + 15-(r1+r4+r8)+ r3+r6+r9 + 15-(r7+r10+r11)
+    
     session.clear()
-    fig = go.Figure(data=go.Scatterpolar(
+    fig = go.Figure()
+    
+    fig.add_trace(data=go.Scatterpolar(
     r=[r2+r5+r12, 15-(r1+r4+r8), r3+r6+r9,15-(r7+r10+r11)],
+    theta=['Agotamiento Emocional', 'Desrealización Profesional', 'Despersonalización', 'Improductividad Subjetiva'],
+    fill='toself'))
+    
+    fig.add_trace(data=go.Scatterpolar(
+    r=[min_por_area, min_por_area, min_por_area, min_por_area],
     theta=['Agotamiento Emocional', 'Desrealización Profesional', 'Despersonalización', 'Improductividad Subjetiva'],
     fill='toself'))
     
@@ -130,12 +141,21 @@ def render_dash():
         ),
         showlegend=False
     )
-    dashapp.layout = html.Div([
-        html.H1('Nivel de Burnout', style={'textAlign': 'center'}),
-        dcc.Graph(figure=fig),
-        html.Div(dcc.Link(html.Button('Volver'), id='volver', href='/', refresh=True), style={'textAlign': 'center'} )  
-    ])
-    
+    if burnout > 22:
+        dashapp.layout = html.Div([
+            html.H1('Nivel de Burnout', style={'textAlign': 'center'}),
+            dcc.Graph(figure=fig),
+            html.Div(dcc.Link(html.Button('Volver'), id='volver', href='/', refresh=True), style={'textAlign': 'center'} ),
+            html.Div(html.H3('Con base a tus respuestas, es probable que presentes burnout en tu trabajo, lo que implica que el estrés que experimentas por tu trabajo puede o ha empezado a afectar negativamente en tu vida, tus emociones y con tus seres queridos. Con base a tus respuestas es recomendable que busques actividades recreativas fuera del contexto laboral (salir a pasear, salir con amigos, visitar a familiares o actividades recreativas como pintar o practicar algún deporte), así mismo de ser posible dedica unos 15 min diarios (puedes usar la alarma de esta aplicación para programar esta actividad) para practicar respiración diafragmática (haz clic aquí para una práctica guiada de esta respiración). Reportes generales de burnout de tu área y recomendaciones serán proporcionados a recursos humanos para que tomen medidas adecuadas para ayudar a que disminuya el estrés que sientes  (no tendrán acceso a resultados por persona, por lo que tus respuestas y resultado se mantendrán anónimos). Si consideras que requieres ayuda terapéutica derivado de los resultados o por otra razón da click en el siguiente botón.'), style={'textAlign': 'center'} )
+        ])
+    else:
+        dashapp.layout = html.Div([
+            html.H1('Nivel de Burnout', style={'textAlign': 'center'}),
+            dcc.Graph(figure=fig),
+            html.Div(dcc.Link(html.Button('Volver'), id='volver', href='/', refresh=True), style={'textAlign': 'center'} ), 
+            html.Div(html.H3('Con base a tus respuestas, es probable que no estés presentando burnout en estos momentos, es decir, tu trabajo no te impide disfrutar del día a día y no es impedimento para mantener tu calidad de vida. Continúa dedicando el tiempo que actualmente le dedicas a tu trabajo así como a actividades recreativas o que te gusten. Es importante que te evalúes por lo menos una vez al mes para detectar algún posible cambio.  Reportes generales de burnout de tu área y recomendaciones serán proporcionados a recursos humanos para que tomen medidas adecuadas y seguir mejorando tu espacio de trabajo para que te sientas cada vez más comodo y a gusto con lo que haces (no tendrán acceso a resultados por persona, por lo que tus respuestas y resultado se mantendrán anónimos)'), style={'textAlign': 'center'} )        
+        ])
+            
     return redirect('dash')
 
     
