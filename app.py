@@ -81,10 +81,26 @@ def results():
 #external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 dashapp = dash.Dash(__name__, server=app, url_base_pathname='/dash/')
 
-fig = go.Figure()
+fig = go.Figure(data=go.Scatterpolar(
+    r=[2, 2, 2, 2],
+    theta=['Agotamiento Emocional', 'Desrealización Profesional', 'Despersonalización', 'Improductividad Subjetiva'],
+    fill='toself'))
 
-    
-dashapp.layout = html.Div()
+fig.update_layout(
+        polar=dict(
+        radialaxis=dict(
+            visible=True
+        ),
+        ),
+        showlegend=False
+    )
+
+dashapp.layout = html.Div([
+            html.H1('Nivel de Burnout', style={'textAlign': 'center'}),
+            dcc.Graph(figure=fig),
+            html.Div(dcc.Link(html.Button('Volver'), id='volver', href='/', refresh=True), style={'textAlign': 'center'} ),
+            html.Div(html.H3('Con base a tus respuestas, es probable que presentes burnout en tu trabajo, lo que implica que el estrés que experimentas por tu trabajo puede o ha empezado a afectar negativamente en tu vida, tus emociones y con tus seres queridos. Con base a tus respuestas es recomendable que busques actividades recreativas fuera del contexto laboral (salir a pasear, salir con amigos, visitar a familiares o actividades recreativas como pintar o practicar algún deporte), así mismo de ser posible dedica unos 15 min diarios (puedes usar la alarma de esta aplicación para programar esta actividad) para practicar respiración diafragmática (haz clic aquí para una práctica guiada de esta respiración). Reportes generales de burnout de tu área y recomendaciones serán proporcionados a recursos humanos para que tomen medidas adecuadas para ayudar a que disminuya el estrés que sientes  (no tendrán acceso a resultados por persona, por lo que tus respuestas y resultado se mantendrán anónimos). Si consideras que requieres ayuda terapéutica derivado de los resultados o por otra razón da click en el siguiente botón.'), style={'textAlign': 'center'} )
+        ])
 
 #error?
 
@@ -128,7 +144,7 @@ def render_dash():
         ),
         showlegend=False
     )
-    if burnout > 22:
+    if int(burnout) > 22:
         dashapp.layout = html.Div([
             html.H1('Nivel de Burnout', style={'textAlign': 'center'}),
             dcc.Graph(figure=fig),
