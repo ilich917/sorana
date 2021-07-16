@@ -1,1 +1,1 @@
-web: gunicorn sorana.wsgi
+web: gunicorn app:app
