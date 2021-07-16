@@ -145,9 +145,7 @@ def render_dash():
     burnout = r2+r5+r12 + 15-(r1+r4+r8)+ r3+r6+r9 + 15-(r7+r10+r11)
     
     session.clear()
-    fig = go.Figure()
-    
-    fig.add_trace(data=go.Scatterpolar(
+    fig = go.Figure(data=go.Scatterpolar(
     r=[r2+r5+r12, 15-(r1+r4+r8), r3+r6+r9,15-(r7+r10+r11)],
     theta=['Agotamiento Emocional', 'Desrealización Profesional', 'Despersonalización', 'Improductividad Subjetiva'],
     fill='toself', name = 'Mi_resultado'))
